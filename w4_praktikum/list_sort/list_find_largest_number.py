@@ -1,6 +1,6 @@
 """
 Create a function that takes a list of numbers and returns the second largest number.
-kustuta kasutas teen faili muudatuse
+minu
 """
 
 def second_largest_sorted(lst):
@@ -10,7 +10,6 @@ def second_largest_sorted(lst):
 def second_largest_sort(lst):
     lst.sort(reverse=True)
     return lst[1]
-
 
 
 # Sellel meetodil on loogika viga- milles see seisneb?
