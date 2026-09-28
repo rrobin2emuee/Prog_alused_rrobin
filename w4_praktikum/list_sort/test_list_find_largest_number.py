@@ -1,4 +1,4 @@
-import pytest """minu"""
+import pytest
 
 import list_find_largest_number as lfln
 
