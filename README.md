@@ -49,16 +49,47 @@ Praktikum:
 22.09.2026	loeng ja praktikum	Loogilised tehted. Mitmeosaline ja mitmeharuline tingimuslause  
 22.09.2026	loeng ja praktikum  Tingimuslaused ja piirjuhtude kontroll
 
-Kasulik:
-https://www.jetbrains.com/academy/student-pack/
+Kasulik:  
+1. https://www.jetbrains.com/academy/student-pack/  
+2. ctrl + click : Thonnys ja PyCharmis "go to definition"
 
 Praktikum:
+1. git & source tree kordamine
+2. python docs : https://docs.python.org/3.14/
+   1. https://docs.python.org/3.14/builtins/stdtypes.html
+   2. https://docs.python.org/3.14/builtins/functions.html  
+3. süntaks:
+   1. funktsiooni defineerimine ja väljakutsumine, argumendid, return
+      1. https://docs.python.org/3/tutorial/controlflow.html#defining-functions 
+   2. for- tsükkel
+      1. https://docs.python.org/3/tutorial/controlflow.html#for-statements
+      2. https://realpython.com/python-for-loop/
+   3. if
+      1. https://docs.python.org/3/tutorial/controlflow.html#if-statements 
+   3. range
+      1. https://docs.python.org/3/tutorial/controlflow.html#the-range-function
 
-Kodutöö:
+**Kodutöö**:
+Paranda loogika viga funktsioonis:  
+def second_largest_manual_sort(lst):
+prog_alus\w4_praktikum\list_sort\list_find_largest_number.py
 
 # w5
 29.09.2026	loeng ja praktikum	Tsüklid ja iteratsioon  
-29.09.2026	loeng ja praktikum	Tsüklite koostamine  
+29.09.2026	loeng ja praktikum	Tsüklite koostamine
+
+Praktikum:
+1. Hinnajärgi optimeeritud elektriauto laadimisaegade leidmine  
+   1. seadmestiku defineerimine (auto, võrguühendus, tarbimisharjumused)
+   2. hinnapäring
+   3. andmetöötlus
+      1. päringu tulemuse hinna järgi sorteerimine
+      2. sobilike kellaaegade filtreerimine
+         1. tarbmimisharjumustest sobilike kellaaegade filtreerimine
+         2. laadimistüübi sõltuvus. Esialgu ainult üks laadimise viis)
+3. https://docs.python.org/3/library/datetime.html#module-datetime
+4. https://docs.python.org/3/library/datetime.html#datetime.date.weekday
+
 
 # w6
 06.10.2026	loeng ja praktikum	Sõned. Indekseerimine, viilutamine, märgikodeering  
