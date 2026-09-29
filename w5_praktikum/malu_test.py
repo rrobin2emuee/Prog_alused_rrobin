@@ -1,3 +1,7 @@
+
+
+
+
 x = int(input("sisesta esimest arvu"))
 y = int(input("sisesta teist arvu"))
 tehe = input("sisesta tehtetüüb")
