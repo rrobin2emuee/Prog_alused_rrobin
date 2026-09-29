@@ -49,16 +49,42 @@ Praktikum:
 22.09.2026	loeng ja praktikum	Loogilised tehted. Mitmeosaline ja mitmeharuline tingimuslause  
 22.09.2026	loeng ja praktikum  Tingimuslaused ja piirjuhtude kontroll
 
-Kasulik:
-https://www.jetbrains.com/academy/student-pack/
+Kasulik:  
+1. https://www.jetbrains.com/academy/student-pack/  
+2. ctrl + click : Thonnys ja PyCharmis "go to definition"
 
 Praktikum:
+1. git & source tree kordamine
+2. python docs : https://docs.python.org/3.14/
+   1. https://docs.python.org/3.14/builtins/stdtypes.html
+   2. https://docs.python.org/3.14/builtins/functions.html  
+3. süntaks:
+   1. funktsiooni defineerimine ja väljakutsumine, argumendid, return
+      1. https://docs.python.org/3/tutorial/controlflow.html#defining-functions 
+   2. for- tsükkel
+      1. https://docs.python.org/3/tutorial/controlflow.html#for-statements
+      2. https://realpython.com/python-for-loop/
+   3. if
+      1. https://docs.python.org/3/tutorial/controlflow.html#if-statements 
+   3. range
+      1. https://docs.python.org/3/tutorial/controlflow.html#the-range-function
 
-Kodutöö:
+**Kodutöö**:
+Paranda loogika viga funktsioonis:  
+def second_largest_manual_sort(lst):
+prog_alus\w4_praktikum\list_sort\list_find_largest_number.py
 
 # w5
 29.09.2026	loeng ja praktikum	Tsüklid ja iteratsioon  
-29.09.2026	loeng ja praktikum	Tsüklite koostamine  
+29.09.2026	loeng ja praktikum	Tsüklite koostamine
+
+Praktikum:
+1. **Ülesanne**:
+   1. Tahan teha skripti, mille järgi tean soodsaid kellaaegasid elektriauto laadimiseks.
+   2. Kas peaks võtma arvesse tarbimisharjumisi ja seadmestikku? (laadimistüüp, peakaitsme võimsus jne)
+2. https://docs.python.org/3/library/datetime.html#module-datetime
+3. https://docs.python.org/3/library/datetime.html#datetime.date.weekday
+
 
 # w6
 06.10.2026	loeng ja praktikum	Sõned. Indekseerimine, viilutamine, märgikodeering  
