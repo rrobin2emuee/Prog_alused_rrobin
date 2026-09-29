@@ -1,0 +1,8 @@
+Seadmed: auto, võrk
+Elektrihind: hinna faili päring
+Intergratsioon: panna koostööle laadimine sõltuvalt elektrihinnast ajahetkel
+print(response.json()) #response = Response obj
+                            connections
+                            ...
+                            ...
+                            .json()
