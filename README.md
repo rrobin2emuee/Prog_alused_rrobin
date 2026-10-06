@@ -95,6 +95,15 @@ Praktikum:
 06.10.2026	loeng ja praktikum	Sõned. Indekseerimine, viilutamine, märgikodeering  
 06.10.2026	loeng ja praktikum	Sõnemeetodid ja tekstitöötlus  
 
+Praktikum:
+1. list, str
+   1. pydocs - len, min, max  
+2. unpack, tuple
+3. ASCII
+   1. str min, max
+4. AI genereeritud kod iseseisvaks õppimiseks w6_praktikum kaustas. Saa aru ja pane tööle 
+
+
 # w7
 13.10.2026	loeng ja praktikum	Järjendid ja ennikud. Muudetavus (mutable objects)  
 13.10.2026	loeng ja praktikum	Järjendioperatsioonid, lahtipakkimine, sortimine  
