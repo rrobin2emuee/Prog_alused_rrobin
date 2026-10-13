@@ -6,8 +6,7 @@
 # Tagasta list [pindala, ümbermõõt].
 def ristkylik(a, b):
     # Kirjuta siia implementatsioon
-    return
-
+    return [a * b, 2 * (a + b)]
 
 #print(ristkylik(3, 4))  # expected output: [12, 14]
 
@@ -16,7 +15,7 @@ def ristkylik(a, b):
 # Tagasta kolme arvu aritmeetiline keskmine.
 def keskmine(a, b, c):
     # Kirjuta siia implementatsioon
-    return
+    return(a+b+c)/3
 
 
 #print(keskmine(2, 4, 9))  # expected output: 5.0
@@ -27,8 +26,7 @@ def keskmine(a, b, c):
 # Vihje: // , % , /
 def jaga(a, b):
     # Kirjuta siia implementatsioon
-    return
-
+    return[a // b, a % b, a / b]
 
 #print(jaga(17, 5))  # expected output: [3, 2, 3.4]
 
@@ -37,7 +35,7 @@ def jaga(a, b):
 # Valem: F = C * 9 / 5 + 32. Ümarda tulemus ühe komakohani.
 def celsius_fahrenheit(c):
     # Kirjuta siia implementatsioon
-    return
+    return (c * 9 / 5 + 32)
 
 
 #print(celsius_fahrenheit(21.5))  # expected output: 70.7
@@ -49,7 +47,10 @@ def celsius_fahrenheit(c):
 # Vihje: // , % ja f-string vormindus {m:02d}
 def aeg(sekundid):
     # Kirjuta siia implementatsioon
-    return
+    h = sekundid // 3600
+    mm = (sekundid % 3600) // 60
+    ss = sekundid % 60
+    return f"{h}:{mm:02d}:{ss:02d}"
 
 
 #print(aeg(3725))  # expected output: 1:02:05
@@ -60,7 +61,9 @@ def aeg(sekundid):
 # Parameetrid on sõned (nagu input() tagastab). Liida arvud kokku ja tagasta täisarv.
 def liida_soned(a, b):
     # Kirjuta siia implementatsioon
-    return
+    a = int(a)
+    b = int(b)
+    return a+b
 
 
 #print(liida_soned("12", "30"))  # expected output: 42
