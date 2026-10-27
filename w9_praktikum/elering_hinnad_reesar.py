@@ -5,7 +5,7 @@ API dokumentatsioon: https://dashboard.elering.ee/assets/swagger-ui/index.html
 Vastus tuleb 15-minutiliste intervallidena: {'timestamp': unix-aeg, 'price': EUR/MWh}.
 Ajad arvutatakse Eesti ajavööndis (Europe/Tallinn), sõltumata arvuti enda seadetest.
 
-Käivita:  python elering_hinnad.py
+Käivita:  python elering_hinnad_reesar.py
 """
 import csv
 from datetime import datetime, time
@@ -17,10 +17,8 @@ API = "https://dashboard.elering.ee/api/nps/price"
 FAILI_NIMI = "hinnad.csv"
 EESTI = ZoneInfo("Europe/Tallinn")
 
-
 def tanased_hinnad() -> dict[datetime, float]:
     """Tagastab tänased hinnad sõnastikuna {Eesti kellaaeg: hind EUR/MWh}.
-
     API ootab algus- ja lõpuaega koos ajavööndiga (ISO 8601), lõpp on kaasa arvatud,
     seega küsime Eesti aja järgi 00:00:00 kuni 23:59:59.
     """
@@ -36,7 +34,6 @@ def tanased_hinnad() -> dict[datetime, float]:
         hinnad[aeg] = kirje["price"]
     return hinnad
 
-
 def salvesta_csv(hinnad: dict[datetime, float], failinimi: str) -> None:
     """Kirjutab hinnad CSV-faili: esimesel real veerupäised, edasi aeg;hind."""
     with open(failinimi, "w", newline="") as f:
@@ -44,7 +41,6 @@ def salvesta_csv(hinnad: dict[datetime, float], failinimi: str) -> None:
         kirjutaja.writerow(["aeg", "hind_eur_mwh"])
         for aeg, hind in hinnad.items():
             kirjutaja.writerow([f"{aeg:%Y-%m-%d %H:%M}", hind])
-
 
 def main() -> None:
     hinnad = tanased_hinnad()
@@ -59,6 +55,11 @@ def main() -> None:
     print(f"\nOdavaim: {odavaim:%H:%M} {hinnad[odavaim]:.2f} EUR/MWh")
     print(f"Kalleim: {kalleim:%H:%M} {hinnad[kalleim]:.2f} EUR/MWh")
 
+    with open('odav.txt', 'w') as odav:
+        odav.write(f"Odavaim: {odavaim:%H:%M} {hinnad[odavaim]} EUR/MWh")
+
+    with open('kallis.txt', 'w') as kallis:
+        kallis.write(f"Kalleim: {kalleim:%H:%M} {hinnad[kalleim]} EUR/MWh")
 
 if __name__ == "__main__":
     main()
