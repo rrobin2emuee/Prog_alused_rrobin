@@ -55,11 +55,36 @@ def main() -> None:
     print(f"\nOdavaim: {odavaim:%H:%M} {hinnad[odavaim]:.2f} EUR/MWh")
     print(f"Kalleim: {kalleim:%H:%M} {hinnad[kalleim]:.2f} EUR/MWh")
 
+#Odavaima ja kalleima hinna leidmine ja failidesse odav.txt, kallis.txt salvestamine
     with open('odav.txt', 'w') as odav:
         odav.write(f"Odavaim: {odavaim:%H:%M} {hinnad[odavaim]} EUR/MWh")
 
     with open('kallis.txt', 'w') as kallis:
         kallis.write(f"Kalleim: {kalleim:%H:%M} {hinnad[kalleim]} EUR/MWh")
+
+#Odavaima 4h järjestiku leidmine ja faili 4h_tarbija.txt salvestamine
+    hinnad_list = list(hinnad.items())
+    max_summa = 999
+    min_summa = 0
+
+    for i in range(len(hinnad_list) - 15):
+        summa = 0
+        for j in range(16):
+            summa += hinnad_list[i + j][1]
+
+        if summa < max_summa:
+            max_summa = summa
+            min_summa = i
+
+    algus_aeg = hinnad_list[min_summa][0]
+    lopp_aeg = hinnad_list[min_summa + 15][0]
+    keskmine_hind = max_summa / 16
+
+    with open('4h_tarbija.txt', 'w', encoding='utf-8') as f_4h:
+        f_4h.write(
+            f"Odavaim 4h periood on alates kell {algus_aeg:%H:%M} kuni {lopp_aeg:%H:%M}. Keskmine hind: {keskmine_hind:.2f} EUR/MWh")
+
+    print(f"4h odavaim periood ({algus_aeg:%H:%M} - {lopp_aeg:%H:%M}) on salvestatud faili 4h_tarbija.txt")
 
 if __name__ == "__main__":
     main()
