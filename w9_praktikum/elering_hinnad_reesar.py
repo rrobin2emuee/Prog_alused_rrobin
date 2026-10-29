@@ -62,29 +62,38 @@ def main() -> None:
     with open('kallis.txt', 'w') as kallis:
         kallis.write(f"Kalleim: {kalleim:%H:%M} {hinnad[kalleim]} EUR/MWh")
 
-#Odavaima 4h järjestiku leidmine ja faili 4h_tarbija.txt salvestamine
-    hinnad_list = list(hinnad.items())
-    max_summa = 999
-    min_summa = 0
+#Odavaima 4h järjestiku leidmine
+    hinnad_list = list(hinnad.items()) # Teen sõnastikust listi, et saaksin indeksitega väärtustele ligi
 
-    for i in range(len(hinnad_list) - 15):
+    # 1. Võtan päeva esimese 16 aja summa esialgseks odavaimaks rekordiks
+    odavaim_summa = 0
+    for u in range(16):
+        odavaim_summa += hinnad_list[u][1]
+
+    algus = 0
+
+    # 2. Otsin ülejäänud päevast (alates 2. ajast ehk indeks 1) odavamat 16 ajalist perioodi
+    for i in range(1, len(hinnad_list) - 15): # Kordan tsüklit niikaua, kuni saab võtta 96 reaga listist 16 järjestikust elementi, ehk -15 lõpus
         summa = 0
-        for j in range(16):
-            summa += hinnad_list[i + j][1]
+        for u in range(16):
+            summa += hinnad_list[i + u][1]
 
-        if summa < max_summa:
-            max_summa = summa
-            min_summa = i
+        # Kui leidsin senisest odavama perioodi, uuendan odavamat rekordit
+        if summa < odavaim_summa:
+            odavaim_summa = summa
+            algus = i
+# i on 16 elemendilise tsükli alguspunkt, u on see 16 elemendiline plokk, mida vaatlen
+# indeks 0 on listis aeg, indeks 1 on hind
+    # Perioodi ajad ja keskmine hind
+    algus_aeg = hinnad_list[algus][0]
+    lopp_aeg = hinnad_list[algus + 15][0]
+    keskmine_hind = odavaim_summa / 16
 
-    algus_aeg = hinnad_list[min_summa][0]
-    lopp_aeg = hinnad_list[min_summa + 15][0]
-    keskmine_hind = max_summa / 16
+    # Kirjutame andmed faili
+    with open('4h_tarbija.txt', 'w') as neli:
+        neli.write(f"Odavaim 4h periood on {algus_aeg:%H:%M} kuni {lopp_aeg:%H:%M}. Keskmine hind: {keskmine_hind:.2f} EUR/MWh")
 
-    with open('4h_tarbija.txt', 'w', encoding='utf-8') as f_4h:
-        f_4h.write(
-            f"Odavaim 4h periood on alates kell {algus_aeg:%H:%M} kuni {lopp_aeg:%H:%M}. Keskmine hind: {keskmine_hind:.2f} EUR/MWh")
-
-    print(f"4h odavaim periood ({algus_aeg:%H:%M} - {lopp_aeg:%H:%M}) on salvestatud faili 4h_tarbija.txt")
+    print(f"4h odavaim periood ({algus_aeg:%H:%M} - {lopp_aeg:%H:%M})")
 
 if __name__ == "__main__":
     main()
