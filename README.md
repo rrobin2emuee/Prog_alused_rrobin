@@ -1,4 +1,5 @@
-# Programmeerimise alused
+# Main haru on koopia õppejõu repost, kodutöö-1 harus on minu tehtud ülesanded, ära neid omavahel merge!
+
 Programmeerimise aluste kursuse repo
 
 # w1
