@@ -77,34 +77,26 @@ def main():     #selles põhifun. annan muutujatele algväärtused ning hiljem s
     print(f"5. Lao koguväärtus käibemaksuta: {vaartus_km_ta:,.2f} €")
     print("6. Lao koguväärtus käibemaksuga (vana määr):" f" {vaartus_vana_km_ga:,.2f} €")
     print("   Lao koguväärtus käibemaksuga (uus määr):" f" {vaartus_uue_maaraga:,.2f} €")
-    print(f"   Vahe: ({vahe:,.2f} €")
+    print(f"   Vahe: {vahe:,.2f} €")
 
 with open("tooted_2025_07.csv", "w", encoding="utf-8") as uus_tabel: #avan uue faili ning kirjutan sinna uue tabeli
     uus_tabel.write("inventari_nr;nimetus;hind;laoseis;km_maar;hind_km_ga\n") # Kirjutan esimese rea koos uue veeru nimega
 
-    # Siia tuleb sinu olemasolev tsükkel, mis loeb vanu tooteid
-    for rida in loe_read("tooted.csv"):
+    for rida in loe_read("tooted.csv"): #kasutan olemasolevat for tsükklit, mis loeb vanad tooted ja nende andmed
         toode = rida.split(";")
 
-        # Võtame vanad andmed
         inventari_nr = toode[0]
         nimetus = toode[1]
         hind_ta = float(toode[2])
         laoseis = toode[3]
         maar = int(toode[4])
 
-        # Muudame 22% -> 24%
-        uus_maar = 24 if maar == 22 else maar
+        uus_maar = 24 if maar == 22 else maar #Muudan km määra 22% pealt 24% peale
 
-        # Arvutame uue hinna käibemaksuga (ümardame 2 komakohani)
-        hind_km_ga = round(hind_ta * (1 + uus_maar / 100), 2)
+        hind_km_ga = round(hind_ta * (1 + uus_maar / 100), 2) # arvutan uue hinna käibemaksuga ja ümardan 2 komakohani
 
-        # Paneme uue rea semikoolonitega kokku
-        uus_rida = (
-            f"{inventari_nr};{nimetus};{hind_ta};{laoseis};{uus_maar};{hind_km_ga}\n"
-        )
-
-        # Kirjutame selle rea uude faili
+        uus_rida = (f"{inventari_nr};{nimetus};{hind_ta};{laoseis};{uus_maar};{hind_km_ga}\n")   # Panen uue rea kokku ja kirjutan selle uude faili
         uus_tabel.write(uus_rida)
+
 if __name__ == "__main__":
     main()
