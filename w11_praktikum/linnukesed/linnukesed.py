@@ -16,7 +16,6 @@ Näiteks:
 >> linnud_sõnastikku("linnud.txt")
 {'tihane': 7, 'varblane': 5, 'rohevint': 1, 'leevike': 6, 'vares': 2}
 
-
 Kirjuta programm, mis:
 * küsib kasutajalt faili nime;
 * loeb funktsiooni linnud_sõnastikku abil sellest failist andmed ja koostab sõnastiku;
@@ -30,3 +29,30 @@ Sisesta arv: 5
 tihane (7)
 leevike (6)
 Juku nägi väljas 21 lindu.'''
+
+def linnud_sõnastikku(faili_nimi):
+    linnud = {}
+    with open(faili_nimi, "r", encoding="utf-8") as f:
+        for rida in f:
+            rida = rida.strip()
+            if rida:
+                osa = rida.split(",")
+                nimi = osa[0].strip()
+                arv = int(osa[1].strip())
+            linnud[nimi] = arv
+    return linnud
+koguarv = 0
+fail = "linnud.txt" #input("Sisesta failinimi: ")
+lind_arv = int(input("Sisesta arv: "))
+lindude_sõnastik = linnud_sõnastikku(fail)
+
+for lind, arv in lindude_sõnastik.items():
+    koguarv += arv              #liidan kokku kõigi lindude koguarvu
+
+    # Kui vaatluste arv on suurem kui kasutaja sisestatud arv, prindime välja
+    if arv > lind_arv:
+        print(f"{lind} ({arv})")
+
+faili_nimi = linnud_sõnastikku("linnud.txt")
+
+print(f"Juku nägi väljas {koguarv} lindu")
