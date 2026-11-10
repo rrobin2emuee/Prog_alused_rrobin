@@ -43,3 +43,16 @@ The Beatles - Let It Be
 Michael Jackson - Thriller
 Queen - A Night at the Opera
 '''
+otsitav_zanr = input("Sisesta žanr: ").lower()  #küsin kasutajalt zanri, muudan vastuse väiketähteteks
+otsitav_aasta = input("Sisesta ajavahemik: ")   #küsin kasutajalt aastat
+
+with open("kogumik.txt", "r", encoding="utf-8") as fail:    #avan faili lugemise reziimis
+    for rida in fail:   #käin tsükliga read läbi
+        osad = rida.strip().split(",")  # Jagame rea komade järgi tükkideks
+
+        plaat = osad[0].strip()             #omistan muutujatele vastavalt listi indeksi järgi kas nimi, zanr ja aasta
+        zanr = osad[1].strip().lower()
+        aasta = osad[2].strip()
+
+        if (not otsitav_zanr or otsitav_zanr == zanr) and (not otsitav_aasta or otsitav_aasta == aasta):     # Kontrollin, kas kriteeriumid klapivad või kas zanr/aasta väli jäeti tühjaks
+            print(plaat)
