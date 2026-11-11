@@ -29,7 +29,7 @@ Kõik sisestused peavad olema ühel real. Näiteks:
 > Uus sisestus: vares,4
 > Uus sisestus: roherähn,6
 > Uus sisestus: vares,4
-välub ctrl + C
+väljub ctrl + C
 
 Näiteks võib programmi väljund olla:
 Sisesta failinimi: linnud.txt
@@ -40,7 +40,7 @@ Juku nägi väljas 21 lindu.
 '''
 
 
-def loe_linnud(faili_nimi):
+"""def loe_linnud(faili_nimi):
     with open(faili_nimi + ".txt", encoding="utf-8") as f:
         for rida in f:
             if rida:
@@ -63,6 +63,46 @@ faili_nimi = input("Anna kohe oma faili nimi siia: ")
 fail = loe_linnud(faili_nimi)
 linnu_raamat = loo_linnu_raamat(fail)
 print(linnu_raamat)
-print(lindude_koguarv(linnu_raamat))
+print(lindude_koguarv(linnu_raamat))"""
 
+def linnud_sonastikku(faili_nimi):
+    linnud = {}                                          #teen tühja sõnastiku
+    with open(faili_nimi, "r", encoding="utf-8") as f:      #avan faili
+        for rida in f:              #rea kaupa käin andmed läbi, puhastan need stripiga ja kui rida esineb,
+                                    #lisan spliti koha pealt dicti nime ja arvu
+            rida = rida.strip()
+            if rida:
+                osa = rida.split(",")
+                nimi = osa[0].strip()
+                arv = int(osa[1].strip())
+            linnud[nimi] = arv      #siin toimub lisamine key value paarina
+    return linnud
 
+fail = "linnud.txt" #input("Sisesta failinimi: ")
+lind_arv = int(input("Sisesta arv: "))
+lindude_sonastik = linnud_sonastikku(fail)
+
+try:    # tänu sellele try käsule, teab arvuti, et hiljem peale info sisestamist saab selle bloki ära lõpetada, nt ctrl + c
+    while True: #lõputu tsükkel, mis kestab kuni kasutaja manuaalse lõpuni
+        uus_sisestus = input("Uus sisestus: ")
+        if uus_sisestus.strip():
+            osa = uus_sisestus.split(",")
+            nimi = osa[0].strip()
+            arv = int(osa[1].strip())
+
+            if nimi in lindude_sonastik:  #kui lind on juba sõnastikus, liidan arvud kokku
+                lindude_sonastik[nimi] += arv
+            else:
+                lindude_sonastik[nimi] = arv  #kui on täiesti uus lind, lisan sõnastikku
+except KeyboardInterrupt:   #lõpetab tsükli, kui kasutaja vajutab klava
+    pass # jätkab järgmise koodiga edasi
+koguarv = 0
+for lind, arv in lindude_sonastik.items():
+    koguarv += arv              #liidan kokku kõigi lindude koguarvu
+
+    if arv > lind_arv:               #kui vaatluste arv on suurem kui kasutaja sisestatud arv, prindin välja
+        print(f"{lind} ({arv})")
+
+faili_nimi = linnud_sonastikku("linnud.txt")
+
+print(f"Juku nägi väljas {koguarv} lindu")
