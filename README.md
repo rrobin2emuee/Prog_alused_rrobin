@@ -1,4 +1,4 @@
-# Main haru on koopia õppejõu repost, kodutöö-1 harus on minu tehtud ülesanded, ära neid omavahel merge!
+# Main haru on koopia õppejõu repost, kodutöö-1 harus on minu tehtud ülesanded, ära neid omavahel merge. Osad ülesanded on ka tehtud main harus.
 Programmeerimise aluste kursuse repo
 
 # w1
